@@ -21,6 +21,11 @@ public class DeckManager : MonoBehaviour
         }
     }
 
+    public string GetCardCount()
+    {
+        return deck.Count.ToString();
+    }
+
     private void PrepareDeck()
     {
         for (int i = 0; i < 28; i++)
