@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Structure
   - Character
+  - Card
   layers:
   - Default
   - TransparentFX
