@@ -6016,7 +6016,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.9450981, g: 0.43921572, b: 0.1764706, a: 1}
-  m_Intensity: 2
+  m_Intensity: 3
   m_Range: 15
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -18349,7 +18349,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.9450981, g: 0.43921572, b: 0.1764706, a: 1}
-  m_Intensity: 2
+  m_Intensity: 3
   m_Range: 15
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -24357,7 +24357,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.9450981, g: 0.43921572, b: 0.1764706, a: 1}
-  m_Intensity: 2
+  m_Intensity: 3
   m_Range: 15
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -24995,6 +24995,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 3cd3b523e59593f4e86b2f0fbac668b9, type: 3}
       propertyPath: m_TagString
       value: Character
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3cd3b523e59593f4e86b2f0fbac668b9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 3cd3b523e59593f4e86b2f0fbac668b9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -35629,7 +35637,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.9450981, g: 0.43921572, b: 0.1764706, a: 1}
-  m_Intensity: 2
+  m_Intensity: 3
   m_Range: 15
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -35881,7 +35889,7 @@ GameObject:
   m_TagString: EditorOnly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1644976900
 Transform:
