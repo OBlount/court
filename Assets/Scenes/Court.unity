@@ -5846,6 +5846,7 @@ GameObject:
   - component: {fileID: 97236297}
   - component: {fileID: 97236299}
   - component: {fileID: 97236298}
+  - component: {fileID: 97236300}
   m_Layer: 5
   m_Name: Count
   m_TagString: Untagged
@@ -5969,6 +5970,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 97236296}
   m_CullTransparentMesh: 1
+--- !u!114 &97236300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 97236296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57b53ee52309acc419e58c9a320e29b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dm: {fileID: 2004539835}
 --- !u!1 &102132444
 GameObject:
   m_ObjectHideFlags: 0
@@ -31373,7 +31387,7 @@ GameObject:
   - component: {fileID: 1424939130}
   - component: {fileID: 1424939132}
   m_Layer: 5
-  m_Name: CardCount
+  m_Name: CardCountIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31451,6 +31465,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltipTextObject: {fileID: 282217647}
   tooltipText: The amount of cards left in the deck
+  offset: {x: 0, y: -50}
+  uiCamera: {fileID: 963194227}
   fadeDuration: 0.2
 --- !u!1 &1445790768
 GameObject:
@@ -42300,9 +42316,9 @@ Canvas:
   m_GameObject: {fileID: 1845645233}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 963194227}
-  m_PlaneDistance: 5
+  m_PlaneDistance: 2
   m_PixelPerfect: 1
   m_ReceivesEvents: 1
   m_OverrideSorting: 0

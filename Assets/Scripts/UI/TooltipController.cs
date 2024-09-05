@@ -7,22 +7,27 @@ public class TooltipController : MonoBehaviour, IPointerEnterHandler, IPointerEx
 {
     public GameObject tooltipTextObject;
     public string tooltipText;
+    public Vector2 offset;
+    public Camera uiCamera;
     public float fadeDuration;
 
     private TMP_Text tooltipTMPText;
+    private RectTransform tooltipRectTransform;
+    private Canvas canvas;
 
     void Start()
     {
         tooltipTMPText = tooltipTextObject.GetComponent<TMP_Text>();
-        SetAlpha(0);
+        tooltipRectTransform = tooltipTextObject.GetComponent<RectTransform>();
+        canvas = GetComponentInParent<Canvas>();
+        SetAlpha(0f);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
         tooltipTMPText.text = tooltipText;
-        Vector3 mousePos = Input.mousePosition;
-        tooltipTextObject.transform.position = mousePos + new Vector3(0f,-30f, 0f);
         tooltipTextObject.SetActive(true);
+        UpdateTooltipPosition();
         StartCoroutine(Fade(0f, 1f));
     }
 
@@ -31,16 +36,39 @@ public class TooltipController : MonoBehaviour, IPointerEnterHandler, IPointerEx
         StartCoroutine(Fade(1f, 0f));
     }
 
+    void Update()
+    {
+        if (tooltipTextObject.activeSelf)
+        {
+            UpdateTooltipPosition();
+        }
+    }
+
+    private void UpdateTooltipPosition()
+    {
+        Vector2 localPoint;
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+            canvas.transform as RectTransform,
+            Input.mousePosition,
+            uiCamera,
+            out localPoint
+        );
+        tooltipRectTransform.localPosition = localPoint + offset;
+    }
+
     private IEnumerator Fade(float startAlpha, float endAlpha)
     {
         float elapsedTime = 0;
+        Color color = tooltipTMPText.color;
         while (elapsedTime < fadeDuration)
         {
             elapsedTime += Time.deltaTime;
-            SetAlpha(Mathf.Lerp(startAlpha, endAlpha, elapsedTime / fadeDuration));
+            color.a = Mathf.Lerp(startAlpha, endAlpha, elapsedTime / fadeDuration);
+            tooltipTMPText.color = color;
             yield return null;
         }
-        SetAlpha(endAlpha);
+        color.a = endAlpha;
+        tooltipTMPText.color = color;
     }
 
     private void SetAlpha(float alpha)
