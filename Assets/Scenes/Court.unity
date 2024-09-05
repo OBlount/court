@@ -1554,7 +1554,7 @@ ParticleSystem:
     donutRadius: 0.2
     m_Position: {x: 0, y: 0.3, z: 0}
     m_Rotation: {x: 30, y: 0, z: 0}
-    m_Scale: {x: 6, y: 2, z: 1}
+    m_Scale: {x: 6.8, y: 2, z: 1}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -6308,7 +6308,7 @@ GameObject:
   - component: {fileID: 220006043}
   - component: {fileID: 220006044}
   m_Layer: 0
-  m_Name: Directional Light
+  m_Name: Flame Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6536,7 +6536,7 @@ GameObject:
   - component: {fileID: 244340720}
   - component: {fileID: 244340721}
   m_Layer: 0
-  m_Name: Directional Light
+  m_Name: Window Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7183,7 +7183,7 @@ GameObject:
   - component: {fileID: 361704427}
   - component: {fileID: 361704428}
   m_Layer: 0
-  m_Name: Directional Light
+  m_Name: Window Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9001,7 +9001,7 @@ ParticleSystem:
     donutRadius: 0.2
     m_Position: {x: 0, y: 0.3, z: 0}
     m_Rotation: {x: 30, y: 0, z: 0}
-    m_Scale: {x: 6, y: 2, z: 1}
+    m_Scale: {x: 6.8, y: 2, z: 1}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -18889,7 +18889,7 @@ GameObject:
   - component: {fileID: 949718004}
   - component: {fileID: 949718005}
   m_Layer: 0
-  m_Name: Directional Light
+  m_Name: Flame Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24897,7 +24897,7 @@ GameObject:
   - component: {fileID: 1131610893}
   - component: {fileID: 1131610894}
   m_Layer: 0
-  m_Name: Directional Light
+  m_Name: Flame Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27212,7 +27212,7 @@ ParticleSystem:
     donutRadius: 0.2
     m_Position: {x: 0, y: 0.3, z: 0}
     m_Rotation: {x: 30, y: 0, z: 0}
-    m_Scale: {x: 6, y: 2, z: 1}
+    m_Scale: {x: 6.8, y: 2, z: 1}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -36399,7 +36399,7 @@ GameObject:
   - component: {fileID: 1487850284}
   - component: {fileID: 1487850285}
   m_Layer: 0
-  m_Name: Directional Light
+  m_Name: Flame Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42431,7 +42431,7 @@ GameObject:
   - component: {fileID: 1961506488}
   - component: {fileID: 1961506489}
   m_Layer: 0
-  m_Name: Directional Light
+  m_Name: Window Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
