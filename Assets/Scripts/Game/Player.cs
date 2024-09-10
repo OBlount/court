@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
     public DeckManager dm;
     public Hand hand;
 
+    private bool isMyTurn = false;
+
     void Awake()
     {
         hand = new Hand();
@@ -16,5 +18,10 @@ public class Player : MonoBehaviour
     {
         if (dm != null) return dm.GetCardCount();
         return "???";
+    }
+
+    public void SetTurnState(bool state)
+    {
+        isMyTurn = state;
     }
 }

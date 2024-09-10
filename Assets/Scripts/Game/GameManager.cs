@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     private void NextTurn()
     {
         turn++;
+        players[turn%players.Count].GetComponent<Player>().SetTurnState(true);
     }
 
     private void InitialiseGame()

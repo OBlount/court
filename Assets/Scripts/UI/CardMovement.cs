@@ -1,112 +1,85 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class CardMovement : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class CardMovement : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
-    public List<GameObject> cards;
-    public float spreadAmount = 50f;
-    public float jumpHeight = 200f;
-    public float smoothSpeed = 5f;
+    [SerializeField]
+    private float dampingSpeed = 0.1f;
+    private RectTransform rect;
+    private Vector3 originalPosition;
+    private Vector3 velocity = Vector3.zero;
+    private Coroutine currentMovement;
+    private Coroutine currentFade;
+    private GameObject dropZone;
 
-    private Vector3[] originalPositions;
-    private Quaternion[] originalRotations;
-    private bool isHovering = false;
-    private Coroutine currentCoroutine;
-
-    private void Start()
+    void Awake()
     {
-        originalPositions = new Vector3[cards.Count];
-        originalRotations = new Quaternion[cards.Count];
-
-        for (int i = 0; i < cards.Count; i++)
-        {
-            originalPositions[i] = cards[i].transform.localPosition;
-            originalRotations[i] = cards[i].transform.localRotation;
-        }
+        rect = transform as RectTransform;
+        originalPosition = rect.position;
+        dropZone = transform.parent.Find("DropZone").gameObject;
     }
 
-    public void OnPointerEnter(PointerEventData eventData)
+    public void OnBeginDrag(PointerEventData eventData)
     {
-        if (!isHovering)
+        if (currentFade != null)
         {
-            if (currentCoroutine != null)
+            StopCoroutine(currentFade);
+        }
+        currentFade = StartCoroutine(Fade(1f));
+    }
+
+    public void OnDrag(PointerEventData eventData)
+    {
+        if (RectTransformUtility.ScreenPointToWorldPointInRectangle(rect, eventData.position, eventData.pressEventCamera, out var globalMousePosition))
+        {
+            if (currentMovement != null)
             {
-                StopCoroutine(currentCoroutine);
+                StopCoroutine(currentMovement);
             }
-            currentCoroutine = StartCoroutine(SmoothSpreadCards());
+            currentMovement = StartCoroutine(MoveCard(globalMousePosition));
         }
     }
 
-    public void OnPointerExit(PointerEventData eventData)
+    public void OnEndDrag(PointerEventData eventData)
     {
-        if (currentCoroutine != null)
+        if (currentMovement != null)
         {
-            StopCoroutine(currentCoroutine);
+            StopCoroutine(currentMovement);
         }
-        currentCoroutine = StartCoroutine(SmoothResetCards());
+        currentMovement = StartCoroutine(MoveCard(originalPosition));
+
+        if (currentFade != null)
+        {
+            StopCoroutine(currentFade);
+        }
+        currentFade = StartCoroutine(Fade(0f));
     }
 
-    private IEnumerator SmoothSpreadCards()
+    private IEnumerator MoveCard(Vector3 targetPosition)
     {
-        isHovering = true;
-        int hoveredCardIndex = cards.IndexOf(gameObject);
-
-        while (isHovering)
+        while (Vector3.Distance(rect.position, targetPosition) > 0.001f)
         {
-            for (int i = 0; i < cards.Count; i++)
-            {
-                Vector3 targetPosition = originalPositions[i];
-                Quaternion targetRotation = originalRotations[i];
-
-                if (i < hoveredCardIndex)
-                {
-                    targetPosition = originalPositions[i] + Vector3.left * spreadAmount * (hoveredCardIndex - i);
-                }
-                else if (i > hoveredCardIndex)
-                {
-                    targetPosition = originalPositions[i] + Vector3.right * spreadAmount * (i - hoveredCardIndex);
-                }
-
-                if (i == hoveredCardIndex)
-                {
-                    targetPosition += Vector3.up * jumpHeight;
-                    targetRotation = Quaternion.Euler(0, 0, 0);
-                }
-
-                cards[i].transform.localPosition = Vector3.Lerp(cards[i].transform.localPosition, targetPosition, Time.deltaTime * smoothSpeed);
-                cards[i].transform.localRotation = Quaternion.Lerp(cards[i].transform.localRotation, targetRotation, Time.deltaTime * smoothSpeed);
-            }
-
+            rect.position = Vector3.SmoothDamp(rect.position, targetPosition, ref velocity, dampingSpeed);
             yield return null;
         }
+        rect.position = targetPosition;
     }
 
-    private IEnumerator SmoothResetCards()
+    private IEnumerator Fade(float targetAlpha)
     {
-        isHovering = false;
+        CanvasGroup canvasGroup = dropZone.GetComponent<CanvasGroup>();
+        float startAlpha = canvasGroup.alpha;
+        float fadeDuration = 0.2f;
+        float elapsedTime = 0f;
 
-        while (!isHovering)
+        while (elapsedTime < fadeDuration)
         {
-            bool allReset = true;
-            for (int i = 0; i < cards.Count; i++)
-            {
-                cards[i].transform.localPosition = Vector3.Lerp(cards[i].transform.localPosition, originalPositions[i], Time.deltaTime * smoothSpeed);
-                cards[i].transform.localRotation = Quaternion.Lerp(cards[i].transform.localRotation, originalRotations[i], Time.deltaTime * smoothSpeed);
-
-                if (Vector3.Distance(cards[i].transform.localPosition, originalPositions[i]) > 0.01f || Quaternion.Angle(cards[i].transform.localRotation, originalRotations[i]) > 0.1f)
-                {
-                    allReset = false;
-                }
-            }
-
-            if (allReset)
-            {
-                break;
-            }
-
+            elapsedTime += Time.deltaTime;
+            canvasGroup.alpha = Mathf.Lerp(startAlpha, targetAlpha, elapsedTime / fadeDuration);
             yield return null;
         }
+
+        canvasGroup.alpha = targetAlpha;
     }
 }
