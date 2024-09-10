@@ -5,9 +5,8 @@ using TMPro;
 
 public class CardCount : MonoBehaviour
 {
-    public GameObject dm;
     void Update()
     {
-        GetComponent<TMP_Text>().text = dm.GetComponent<DeckManager>().GetCardCount();
+        GetComponent<TMP_Text>().text = transform.parent.parent.parent.parent.GetComponent<Player>().AskCardCount();
     }
 }

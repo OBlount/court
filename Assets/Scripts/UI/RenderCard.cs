@@ -4,13 +4,14 @@ using UnityEngine.UI;
 public class RenderCard : MonoBehaviour
 {
     public int cardIndex;
+
     private bool isRendered = false;
 
     void Update()
     {
         if (!isRendered)
         {
-            Hand hand = transform.parent.parent.parent.GetComponent<Hand>();
+            Hand hand = transform.parent.parent.parent.GetComponent<Player>().hand;
             GetComponent<Image>().sprite = hand.GetCard(cardIndex).GetSprite();
 
             // Change alpha

@@ -8,25 +8,9 @@ public class DeckManager : MonoBehaviour
     void Awake()
     {
         deck = new List<Card>();
-        PrepareDeck();
     }
 
-    public void DealCard(List<Card> hand)
-    {
-        if (deck != null && deck.Count > 0)
-        {
-            Card cardToDeal = deck[0];
-            deck.RemoveAt(0);
-            hand.Add(cardToDeal);
-        }
-    }
-
-    public string GetCardCount()
-    {
-        return deck.Count.ToString();
-    }
-
-    private void PrepareDeck()
+    public void PrepareDeck()
     {
         for (int i = 0; i < 28; i++)
         {
@@ -49,6 +33,27 @@ public class DeckManager : MonoBehaviour
         }
 
         ShuffleDeck();
+    }
+
+
+    public void DealCard(Hand hand)
+    {
+        if (deck != null && deck.Count > 0)
+        {
+            Card cardToDeal = deck[0];
+            deck.RemoveAt(0);
+            hand.AddCard(cardToDeal);
+        }
+        else
+        {
+            Card noneCard = new Card(CardType.None);
+            hand.AddCard(noneCard);
+        }
+    }
+
+    public string GetCardCount()
+    {
+        return deck.Count.ToString();
     }
 
     private void ShuffleDeck()
