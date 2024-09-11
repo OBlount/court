@@ -20,6 +20,11 @@ public class GameManager : MonoBehaviour
         players[turn%players.Count].GetComponent<Player>().SetTurnState(true);
     }
 
+    public string GetTurnNumber()
+    {
+        return turn.ToString();
+    }
+
     private void InitialiseGame()
     {
         players = new List<GameObject>();

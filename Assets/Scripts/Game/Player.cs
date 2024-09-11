@@ -42,6 +42,12 @@ public class Player : MonoBehaviour
         return "???";
     }
 
+    public string AskTurnNumber()
+    {
+        if (gm != null) return gm.GetTurnNumber();
+        return "???";
+    }
+
     public void SetTurnState(bool state)
     {
         isMyTurn = state;
