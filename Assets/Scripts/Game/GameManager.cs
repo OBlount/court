@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
         InitialiseGame();
     }
 
-    private void NextTurn()
+    public void NextTurn()
     {
         turn++;
         players[turn%players.Count].GetComponent<Player>().SetTurnState(true);
@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
     private void InstantiateNewPlayer(string characterName)
     {
         GameObject newPlayer = Instantiate(Resources.Load<GameObject>($"Prefabs/Players/{characterName}"));
+        newPlayer.GetComponent<Player>().gm = this;
         newPlayer.GetComponent<Player>().dm = dm;
         newPlayer.transform.SetParent(GameObject.Find("==Characters==").transform);
         newPlayer.name = characterName;

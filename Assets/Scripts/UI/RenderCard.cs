@@ -5,14 +5,21 @@ public class RenderCard : MonoBehaviour
 {
     public int cardIndex;
 
-    private bool isRendered = false;
+    private Hand hand;
+    private CardType previousCardType;
+
+    void Awake()
+    {
+        hand = transform.parent.parent.parent.GetComponent<Player>().hand;
+    }
 
     void Update()
     {
-        if (!isRendered)
+        Card card = hand.GetCard(cardIndex);
+        if (previousCardType != card.GetCardType())
         {
-            Hand hand = transform.parent.parent.parent.GetComponent<Player>().hand;
-            GetComponent<Image>().sprite = hand.GetCard(cardIndex).GetSprite();
+            previousCardType = card.GetCardType();
+            GetComponent<Image>().sprite = card.GetSprite();
 
             // Change alpha
             if (hand.GetCard(cardIndex).GetCardType() == CardType.None)
@@ -27,13 +34,6 @@ public class RenderCard : MonoBehaviour
                 colour.a = 1.0f;
                 GetComponent<Image>().color = colour;
             }
-
-            isRendered = true;
         }
-    }
-
-    public void Render()
-    {
-        isRendered = false;
     }
 }

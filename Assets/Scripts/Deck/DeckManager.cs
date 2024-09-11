@@ -4,10 +4,12 @@ using UnityEngine;
 public class DeckManager : MonoBehaviour
 {
     private List<Card> deck;
+    private List<Card> discard;
 
     void Awake()
     {
         deck = new List<Card>();
+        discard = new List<Card>();
     }
 
     public void PrepareDeck()
@@ -35,7 +37,6 @@ public class DeckManager : MonoBehaviour
         ShuffleDeck();
     }
 
-
     public void DealCard(Hand hand)
     {
         if (deck != null && deck.Count > 0)
@@ -46,9 +47,21 @@ public class DeckManager : MonoBehaviour
         }
         else
         {
-            Card noneCard = new Card(CardType.None);
-            hand.AddCard(noneCard);
+            hand.AddCard(new Card(CardType.None));
         }
+    }
+
+    public void DiscardCard(Card card)
+    {
+        if (card.GetCardType() != CardType.None)
+        {
+            discard.Add(card);
+        }
+    }
+
+    public void EmptyDiscardDeck()
+    {
+        discard.Clear();
     }
 
     public string GetCardCount()

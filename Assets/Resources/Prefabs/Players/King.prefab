@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2959941564156829458}
   - component: {fileID: 2040189384375668085}
   - component: {fileID: 4395827225951688431}
+  - component: {fileID: 7453800041873372486}
   m_Layer: 5
   m_Name: Card3
   m_TagString: Card
@@ -103,6 +104,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardIndex: 2
+--- !u!65 &7453800041873372486
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 771663836920454505}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 125, y: 200, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1225310628269327591
 GameObject:
   m_ObjectHideFlags: 0
@@ -284,6 +306,7 @@ GameObject:
   - component: {fileID: 8856735585233025004}
   - component: {fileID: 8209327611960139354}
   - component: {fileID: 7707979997400378140}
+  - component: {fileID: 4045361706453984143}
   m_Layer: 5
   m_Name: Card2
   m_TagString: Card
@@ -374,6 +397,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardIndex: 1
+--- !u!65 &4045361706453984143
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530841765158968096}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 125, y: 200, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1880730900567280483
 GameObject:
   m_ObjectHideFlags: 0
@@ -386,6 +430,7 @@ GameObject:
   - component: {fileID: 459169474683972943}
   - component: {fileID: 8142741296188411862}
   - component: {fileID: 5187717134115014102}
+  - component: {fileID: 3119312628516683892}
   m_Layer: 5
   m_Name: DropZone
   m_TagString: Untagged
@@ -463,6 +508,27 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!65 &3119312628516683892
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1880730900567280483}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 650, y: 150, z: 400}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3641481892449204639
 GameObject:
   m_ObjectHideFlags: 0
@@ -610,6 +676,7 @@ GameObject:
   - component: {fileID: 3551157294856349656}
   - component: {fileID: 3360830117082903578}
   - component: {fileID: 3450967392000009036}
+  - component: {fileID: 1009359429145204288}
   m_Layer: 5
   m_Name: Card1
   m_TagString: Card
@@ -700,6 +767,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardIndex: 0
+--- !u!65 &1009359429145204288
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3687347222362191251}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 125, y: 200, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3752070844311184418
 GameObject:
   m_ObjectHideFlags: 0
@@ -1219,6 +1307,7 @@ GameObject:
   - component: {fileID: 199051506974831786}
   - component: {fileID: 8426929623393360027}
   - component: {fileID: 2749731382709287572}
+  - component: {fileID: 2803320482722034044}
   m_Layer: 5
   m_Name: CardCountIcon
   m_TagString: Untagged
@@ -1301,6 +1390,18 @@ MonoBehaviour:
   offset: {x: 0, y: -25}
   uiCamera: {fileID: 3796533648683542933}
   fadeDuration: 0.2
+--- !u!225 &2803320482722034044
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8444792284491026849}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &3693704420715832816
 PrefabInstance:
   m_ObjectHideFlags: 0

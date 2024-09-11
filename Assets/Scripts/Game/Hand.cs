@@ -15,6 +15,13 @@ public class Hand
         hand.Add(card);
     }
 
+    public Card RemoveCard(int cardIndex)
+    {
+        Card card = hand[cardIndex];
+        hand.RemoveAt(cardIndex);
+        return card;
+    }
+
     public Card GetCard(int index)
     {
         if (index < 0 || index > 3) return null;

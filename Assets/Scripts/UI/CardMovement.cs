@@ -12,12 +12,14 @@ public class CardMovement : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
     private Coroutine currentMovement;
     private Coroutine currentFade;
     private GameObject dropZone;
+    private Player player;
 
     void Awake()
     {
         rect = transform as RectTransform;
         originalPosition = rect.position;
         dropZone = transform.parent.Find("DropZone").gameObject;
+        player = transform.parent.parent.parent.gameObject.GetComponent<Player>();
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -43,6 +45,14 @@ public class CardMovement : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        if (dropZone.GetComponent<BoxCollider>().bounds.Intersects(GetComponent<BoxCollider>().bounds))
+        {
+            if (player.hand.GetCard(GetComponent<RenderCard>().cardIndex).GetCardType() != CardType.None)
+            {
+                player.PlayCard(GetComponent<RenderCard>().cardIndex);
+            }
+        }
+
         if (currentMovement != null)
         {
             StopCoroutine(currentMovement);
