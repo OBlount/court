@@ -9,11 +9,13 @@ public class Player : MonoBehaviour
     public Hand hand;
 
     private bool isMyTurn = false;
+    private PlayerMovement playerMovement;
     private List<GameObject> cardUis;
 
     void Awake()
     {
         hand = new Hand();
+        playerMovement = GetComponent<PlayerMovement>();
         cardUis = new List<GameObject>();
         foreach (Transform child in transform.Find("==UI==").Find("HUD"))
         {
@@ -29,9 +31,18 @@ public class Player : MonoBehaviour
     {
         if (isMyTurn)
         {
+            playerMovement.SetLookingMode(false);
             foreach (GameObject card in cardUis)
             {
                 card.SetActive(true);
+            }
+        }
+        else
+        {
+            playerMovement.SetLookingMode(true);
+            foreach (GameObject card in cardUis)
+            {
+                card.SetActive(false);
             }
         }
     }
