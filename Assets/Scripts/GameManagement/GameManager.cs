@@ -31,6 +31,8 @@ public class GameManager : MonoBehaviour
         InstantiateNewPlayer("King"); // Just place the king prefab down for now
 
         dm.PrepareDeck();
+        dm.EmptyDiscardDeck();
+        dm.EmptyChest();
         foreach (GameObject playerPrefab in players)
         {
             Player player = playerPrefab.GetComponent<Player>();

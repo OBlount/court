@@ -53,6 +53,12 @@ public class Player : MonoBehaviour
         return "???";
     }
 
+    public string PeekChest()
+    {
+        if (dm != null) return dm.GetChestCardCount();
+        return "???";
+    }
+
     public string AskTurnNumber()
     {
         if (gm != null) return gm.GetTurnNumber();
@@ -66,7 +72,19 @@ public class Player : MonoBehaviour
 
     public void PlayCard(int cardIndex)
     {
-        // Add logic for each card type
+        Card card = hand.GetCard(cardIndex);
+        switch (card.GetCardType())
+        {
+            case CardType.Kill:
+                // TODO
+                break;
+            case CardType.PlusOne:
+            case CardType.MinusTwo:
+            case CardType.Zero:
+                dm.AddToChest(card);
+                break;
+        }
+
         hand.RemoveCard(cardIndex);
         dm.DealCard(hand);
         gm.NextTurn();
